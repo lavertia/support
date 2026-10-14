@@ -89,8 +89,9 @@ final class ComponentSerializer
         }
     }
 
-    /** @param array<string, mixed> $props
-     *  @return array<string, mixed>
+    /**
+     * @param  array<string, mixed>  $props
+     * @return array<string, mixed>
      */
     private function normalizeProperties(array $props): array
     {
