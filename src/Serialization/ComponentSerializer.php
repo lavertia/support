@@ -52,7 +52,7 @@ final class ComponentSerializer
         try {
             $components = $component->getComponents();
 
-            if (! array_is_list($components)) {
+            if (array_is_list($components) === false) {
                 throw new InvalidArgumentException('Component children must be a list.');
             }
 
@@ -101,7 +101,7 @@ final class ComponentSerializer
         $normalized = [];
 
         foreach ($props as $key => $value) {
-            if (! is_string($key) || preg_match('/^[A-Za-z][A-Za-z0-9_]*$/D', $key) !== 1) {
+            if (is_string($key) === false || preg_match('/^[A-Za-z][A-Za-z0-9_]*$/D', $key) !== 1) {
                 throw new InvalidArgumentException('Invalid component property name.');
             }
 
@@ -129,7 +129,7 @@ final class ComponentSerializer
             $normalized = [];
 
             foreach ($value as $key => $item) {
-                if (! is_int($key) && ! is_string($key)) {
+                if (is_int($key) === false && is_string($key) === false) {
                     throw new InvalidArgumentException('Invalid nested property key.');
                 }
 
