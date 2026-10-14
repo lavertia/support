@@ -33,7 +33,9 @@ final class ComponentSerializer
         int &$nodeCount,
         SplObjectStorage $active,
     ): array {
-        if ($depth > self::MAX_DEPTH || ++$nodeCount > self::MAX_NODES) {
+        $nodeCount++;
+
+        if ($depth > self::MAX_DEPTH || $nodeCount > self::MAX_NODES) {
             throw new InvalidArgumentException('Component tree exceeds Lavertia limits.');
         }
 
@@ -58,7 +60,7 @@ final class ComponentSerializer
             $siblingKeys = [];
 
             foreach ($components as $index => $child) {
-                if (! $child instanceof Component) {
+                if ($child instanceof Component === false) {
                     throw new InvalidArgumentException('Invalid component child.');
                 }
 
