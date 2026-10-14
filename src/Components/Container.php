@@ -14,7 +14,7 @@ class Container extends AbstractComponent implements ComposesComponents
     /** @param list<Component> $components */
     public static function make(array $components = []): static
     {
-        return (new static())->components($components);
+        return (new static)->components($components);
     }
 
     public function getType(): string

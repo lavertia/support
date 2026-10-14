@@ -59,7 +59,7 @@ abstract class AbstractComponent implements Component
     /** @return array<string, mixed> */
     public function toArray(): array
     {
-        return (new ComponentSerializer())->serialize($this);
+        return (new ComponentSerializer)->serialize($this);
     }
 
     /** @return array<string, mixed> */

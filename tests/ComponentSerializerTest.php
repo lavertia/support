@@ -37,7 +37,8 @@ final class ComponentSerializerTest extends TestCase
 
     public function test_php_closures_cannot_be_serialized(): void
     {
-        $unsafe = new class extends AbstractComponent {
+        $unsafe = new class extends AbstractComponent
+        {
             public function getType(): string
             {
                 return 'unsafe';

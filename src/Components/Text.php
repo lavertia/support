@@ -8,7 +8,7 @@ final class Text extends AbstractComponent
 {
     public static function make(string $text): static
     {
-        return (new static())->withProp('content', $text);
+        return (new self)->withProp('content', $text);
     }
 
     public function getType(): string

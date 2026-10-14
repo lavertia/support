@@ -11,13 +11,15 @@ use SplObjectStorage;
 final class ComponentSerializer
 {
     private const MAX_NODES = 1000;
+
     private const MAX_DEPTH = 32;
+
     private const MAX_PROP_DEPTH = 16;
 
     /** @return array<string, mixed> */
     public function serialize(Component $component): array
     {
-        $active = new SplObjectStorage();
+        $active = new SplObjectStorage;
         $nodeCount = 0;
 
         return $this->serializeNode($component, 'root', 0, $nodeCount, $active);

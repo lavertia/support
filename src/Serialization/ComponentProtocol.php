@@ -15,7 +15,7 @@ final class ComponentProtocol
     {
         return [
             'version' => self::VERSION,
-            'tree' => (new ComponentSerializer())->serialize($component),
+            'tree' => (new ComponentSerializer)->serialize($component),
         ];
     }
 }
