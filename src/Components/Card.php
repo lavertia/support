@@ -10,3 +10,4 @@ final class Card extends Container
     {
         return 'card';
     }
+}

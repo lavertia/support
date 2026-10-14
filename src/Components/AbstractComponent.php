@@ -67,3 +67,4 @@ abstract class AbstractComponent implements Component
     {
         return $this->toArray();
     }
+}

@@ -36,3 +36,4 @@ trait SupportsComponents
     {
         return $this->children;
     }
+}

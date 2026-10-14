@@ -15,3 +15,4 @@ final class Text extends AbstractComponent
     {
         return 'text';
     }
+}

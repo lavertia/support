@@ -10,3 +10,4 @@ final class Column extends Container
     {
         return 'column';
     }
+}

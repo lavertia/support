@@ -21,3 +21,4 @@ class Container extends AbstractComponent implements ComposesComponents
     {
         return 'container';
     }
+}
