@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "tree": {
+    "type": "column",
+    "key": "root",
+    "props": {},
+    "components": [
+      {
+        "type": "text",
+        "key": "root/heading",
+        "props": {
+          "content": "Hello"
+        },
+        "components": []
+      },
+      {
+        "type": "card",
+        "key": "root/details",
+        "props": {},
+        "components": [
+          {
+            "type": "text",
+            "key": "root/details/text-0",
+            "props": {
+              "content": "World"
+            },
+            "components": []
+          }
+        ]
+      }
+    ]
+  }
+}
