@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lavertia.github.io/lavertia-doc/schemas/component-protocol-v1.json",
+  "title": "Lavertia Component Protocol v1",
+  "description": "A JSON-safe PHP component tree. The schema validates structure; the serializer additionally limits total nodes, nesting depth and duplicate sibling keys.",
+  "type": "object",
+  "required": [
+    "version",
+    "tree"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "tree": {
+      "$ref": "#/$defs/node"
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": [
+        "type",
+        "key",
+        "props",
+        "components"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^root(?:/[A-Za-z][A-Za-z0-9_.-]{0,127})*$"
+        },
+        "props": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Za-z][A-Za-z0-9_]*$": {
+              "$ref": "#/$defs/jsonValue"
+            }
+          },
+          "additionalProperties": false
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          },
+          "maxItems": 1000
+        }
+      }
+    },
+    "jsonValue": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        }
+      ]
+    }
+  }
+}
