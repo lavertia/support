@@ -63,4 +63,31 @@ final class ComponentSerializerTest extends TestCase
         self::assertNull($original->getKey());
         self::assertSame('changed', $modified->getKey());
     }
+
+    public function test_plugin_component_accepts_vendor_namespace(): void
+    {
+        $component = new class extends AbstractComponent
+        {
+            public function getType(): string
+            {
+                return 'my-vendor.rating-input';
+            }
+        };
+
+        self::assertSame('my-vendor.rating-input', $component->toArray()['type']);
+    }
+
+    public function test_invalid_multi_level_namespace_is_rejected(): void
+    {
+        $component = new class extends AbstractComponent
+        {
+            public function getType(): string
+            {
+                return 'my-vendor.forms.rating';
+            }
+        };
+
+        $this->expectException(InvalidArgumentException::class);
+        $component->toArray();
+    }
 }
