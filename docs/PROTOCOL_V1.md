@@ -20,6 +20,12 @@ Lavertia Support turns immutable PHP Components into a frontend-neutral JSON tre
 
 The root `key` is `root`. Descendants include stable, validated sibling keys in their path. Each serialized node has exactly `type`, `key`, `props` and `components`. Empty props encode as `{}`, not `[]`.
 
+### Component type identifiers and plugins
+
+Built-in component types remain hyphenated lowercase identifiers, for example `text-input` and `text-column`. Third-party components **may** use a single qualified name `vendor.component`, for example `app.rating-input` or `my-vendor.rating-input`. Valid identifiers match `^[a-z][a-z0-9-]*(\.[a-z][a-z0-9-]*)?$`. Multiple dots, URLs, CSS selectors and arbitrary code are invalid.
+
+This namespace is **identity only**: registering a PHP Component does not automatically install or execute a frontend renderer. The host's UI Kit Registry must supply the matching component (or explicitly fail with a useful error). Component `props` remain JSON-safe and do not transport executable callbacks. This is an additive protocol-v1 extension covered by serializer tests; no schema field was renamed.
+
 ### Safety invariants
 
 - Only scalar JSON values and nested arrays/maps are allowed in props. No closures, models, objects, resources, non-finite floats or PHP code cross the wire.
