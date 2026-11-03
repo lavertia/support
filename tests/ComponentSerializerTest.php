@@ -63,6 +63,7 @@ final class ComponentSerializerTest extends TestCase
         self::assertNull($original->getKey());
         self::assertSame('changed', $modified->getKey());
     }
+
     public function test_plugin_component_accepts_vendor_namespace(): void
     {
         $component = new class extends AbstractComponent
@@ -89,5 +90,4 @@ final class ComponentSerializerTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $component->toArray();
     }
-
 }
