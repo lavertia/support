@@ -43,7 +43,7 @@ final class ComponentSerializer
             throw new InvalidArgumentException('Cyclic component tree detected.');
         }
 
-        if (preg_match('/^[a-z][a-z0-9-]*$/D', $component->getType()) !== 1) {
+        if (preg_match('/^[a-z][a-z0-9-]*(?:\.[a-z][a-z0-9-]*)?$/D', $component->getType()) !== 1) {
             throw new InvalidArgumentException('Invalid component type.');
         }
 
